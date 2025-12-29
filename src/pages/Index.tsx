@@ -13,7 +13,7 @@ const doctor = {
     title: "Consultant Rheumatologist & Clinical Immunologist",
     experience: "15+ Years Experience",
     tagline: "Enhancing Lives through Advanced Rheumatology Care",
-    profileImage: "/images/dr-arun.png",
+    profileImage: "/drArun.jpg",
     initials: "AG",
   },
 
@@ -45,8 +45,9 @@ const doctor = {
 
   contact: {
     phones: [
+      { label: "Mobile", value: "+9779851010565" },
       { label: "Clinic", value: "+97714545877" },
-      { label: "Mobile", value: "9813431616" },
+
     ],
     email: "drarun_2007@yahoo.com",
     website: "https://www.racnepal.com",
@@ -77,10 +78,8 @@ const doctor = {
   ],
 
   social: {
-    facebook: "https://facebook.com/dr-arun",
-    instagram: "https://instagram.com/dr-arun",
-    youtube: "https://youtube.com/@dr-arun",
-    linkedin: "https://linkedin.com/in/dr-arun",
+    facebook: "https://www.facebook.com/drarun.k.gupta",
+    instagram: "https://www.instagram.com/drarun.k.gupta",
   },
 
   vcard: {
@@ -198,7 +197,7 @@ const VCard = () => {
       <div className="w-full max-w-md px-4 pb-10 z-10 pt-8">
         {/* Main Glass Card */}
         <div className="bg-vcard-glass backdrop-blur-2xl rounded-[2.5rem] shadow-vcard overflow-hidden border border-white/60 animate-fade-in relative">
-          
+
           {/* Share Button */}
           <button
             onClick={handleShare}
@@ -215,9 +214,11 @@ const VCard = () => {
             <div className="relative w-40 h-40 mb-5 group">
               <div className="absolute inset-0 bg-gradient-vcard rounded-full blur-xl opacity-40 group-hover:opacity-60 transition-opacity duration-500" />
               <div className="relative w-40 h-40 rounded-full border-[6px] border-white shadow-2xl overflow-hidden bg-white hover:scale-[1.02] transition-transform duration-500">
-                <div className="w-full h-full bg-gradient-vcard flex items-center justify-center text-white text-4xl font-bold">
-                  {doctor.personal.initials}
-                </div>
+                <img
+                  src={doctor.personal.profileImage}
+                  alt={doctor.personal.fullName}
+                  className="w-full h-full object-cover"
+                />
               </div>
               {/* Online Indicator */}
               <div className="absolute bottom-2 right-2 bg-vcard-online w-7 h-7 rounded-full border-[3px] border-white shadow-md flex items-center justify-center">
@@ -373,10 +374,10 @@ const VCard = () => {
                             <p className="font-bold text-foreground text-sm">{clinic.name}</p>
                             <p className="text-xs text-vcard-accent font-medium">{clinic.role}</p>
                           </div>
-                          <Button 
-                            variant="ghost" 
-                            size="icon" 
-                            onClick={() => handleDirections(clinic.mapsQuery)} 
+                          <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={() => handleDirections(clinic.mapsQuery)}
                             className="shrink-0 h-8 w-8 text-muted-foreground hover:text-vcard-secondary hover:bg-vcard-secondary/10 rounded-full"
                           >
                             <Navigation className="w-4 h-4" />
@@ -445,12 +446,6 @@ const VCard = () => {
                   </button>
                   <button onClick={() => handleSocial(doctor.social.instagram)} className="w-11 h-11 rounded-full bg-white/80 border border-border flex items-center justify-center text-muted-foreground hover:text-[#E4405F] hover:bg-[#E4405F]/10 hover:border-[#E4405F]/30 transition-all duration-300 hover:scale-110">
                     <Instagram className="w-5 h-5" />
-                  </button>
-                  <button onClick={() => handleSocial(doctor.social.youtube)} className="w-11 h-11 rounded-full bg-white/80 border border-border flex items-center justify-center text-muted-foreground hover:text-[#FF0000] hover:bg-[#FF0000]/10 hover:border-[#FF0000]/30 transition-all duration-300 hover:scale-110">
-                    <Youtube className="w-5 h-5" />
-                  </button>
-                  <button onClick={() => handleSocial(doctor.social.linkedin)} className="w-11 h-11 rounded-full bg-white/80 border border-border flex items-center justify-center text-muted-foreground hover:text-[#0A66C2] hover:bg-[#0A66C2]/10 hover:border-[#0A66C2]/30 transition-all duration-300 hover:scale-110">
-                    <Linkedin className="w-5 h-5" />
                   </button>
                 </div>
               </div>
