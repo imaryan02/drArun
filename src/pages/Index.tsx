@@ -380,7 +380,7 @@ const VCard = () => {
                 >
                   <div className="flex items-center gap-3">
                     <Building2 className="w-5 h-5 text-vcard-accent" />
-                    <span className="text-sm font-semibold text-foreground">Visiting Clinics ({doctor.clinics.length})</span>
+                    <span className="text-sm font-semibold text-foreground">Consultation Locations ({doctor.clinics.length})</span>
                   </div>
                   {showClinics ? <ChevronUp className="w-4 h-4 text-muted-foreground" /> : <ChevronDown className="w-4 h-4 text-muted-foreground" />}
                 </button>
