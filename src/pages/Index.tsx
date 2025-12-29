@@ -140,8 +140,8 @@ const VCard = () => {
 
   const handleWhatsApp = () => {
     const message = encodeURIComponent(`Hello ${doctor.personal.shortName}, I would like to inquire about an appointment.`);
-    const phone = doctor.contact.phones[1]?.value || doctor.contact.phones[0].value;
-    window.open(`https://wa.me/${phone.replace(/\+/g, '')}?text=${message}`, '_blank');
+    const mobilePhone = doctor.contact.phones.find(p => p.label === "Mobile")?.value || doctor.contact.phones[0].value;
+    window.open(`https://wa.me/${mobilePhone.replace(/\+/g, '')}?text=${message}`, '_blank');
   };
 
   const handleCall = () => {
