@@ -107,6 +107,25 @@ const VCard = () => {
     try {
       toast.info("Generating contact card...");
 
+      // Fetch and convert image to base64
+      let photoString = '';
+      try {
+        const response = await fetch(doctor.personal.profileImage);
+        const blob = await response.blob();
+        const base64 = await new Promise<string>((resolve) => {
+          const reader = new FileReader();
+          reader.onloadend = () => {
+            const result = reader.result as string;
+            // Remove the data URL prefix (e.g., "data:image/jpeg;base64,")
+            resolve(result.split(',')[1]);
+          };
+          reader.readAsDataURL(blob);
+        });
+        photoString = `PHOTO;ENCODING=b;TYPE=JPEG:${base64}`;
+      } catch (error) {
+        console.error("Failed to load profile image for vCard", error);
+      }
+
       const vCardLines = [
         'BEGIN:VCARD',
         'VERSION:3.0',
@@ -118,6 +137,7 @@ const VCard = () => {
         `EMAIL;TYPE=WORK:${doctor.contact.email}`,
         `URL:${doctor.contact.website}`,
         `ADR;TYPE=WORK:;;${doctor.clinics[0].name};${doctor.clinics[0].address};;;`,
+        ...(photoString ? [photoString] : []), // Add photo if available
         `NOTE:${doctor.vcard.notes}`,
         'END:VCARD'
       ];
