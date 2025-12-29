@@ -59,14 +59,14 @@ const doctor = {
       name: "Rheumatology & Arthritis Center (RAC)",
       role: "Chairman and Consultant Rheumatologist",
       address: "Naxal, Kathmandu, Nepal",
-      timings: [{ days: "Monday – Friday", time: "8:00 AM – 10:00 AM & 4:00 PM – 7:00 PM" }],
+      timings: [{ days: "Sunday – Friday", time: "8:00 AM – 10:00 AM & 4:00 PM – 7:00 PM" }],
       mapsQuery: "https://maps.app.goo.gl/bp4xG2oeR4VK2VBU8",
     },
     {
       name: "Norvic International Hospital",
       role: "HOD Consultant Rheumatology and Clinical Immunologist",
       address: "Thapathali, Kathmandu, Nepal",
-      timings: [{ days: "Monday – Friday", time: "10:00 AM – 3:00 PM" }],
+      timings: [{ days: "Sunday – Friday", time: "11:00 AM – 3:00 PM" }],
       mapsQuery: "Norvic International Hospital Kathmandu",
     },
     {
