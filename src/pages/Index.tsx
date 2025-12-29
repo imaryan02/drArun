@@ -11,7 +11,7 @@ const doctor = {
     fullName: "Dr. Arun Kumar Gupta",
     shortName: "Dr. Arun Gupta",
     title: "Consultant Rheumatologist & Clinical Immunologist",
-    experience: "15+ Years Experience",
+    experience: "30+ Years Experience",
     tagline: "Enhancing Lives through Advanced Rheumatology Care",
     profileImage: "/drArun.jpg",
     initials: "AG",
@@ -30,9 +30,9 @@ const doctor = {
       "Fellowship in Rheumatology & Clinical Immunology – SGPGIMS, Lucknow (India)",
     ],
   },
-
+ 
   positions: [
-    { role: "President", organization: "Norvic International Hospital" },
+    { role: "Consultant HOD Rheumatologist", organization: "Norvic International Hospital" },
     { role: "Consultant Physician & Rheumatologist", organization: "Rheumatology & Arthritis Center" },
   ],
 
@@ -56,23 +56,23 @@ const doctor = {
   clinics: [
     {
       name: "Norvic International Hospital",
-      role: "President",
+      role: "Consultant HOD Rheumatologist",
       address: "Thapathali, Kathmandu, Nepal",
-      timings: [{ days: "Monday – Friday", time: "9:00 AM – 5:00 PM" }],
+      timings: [{ days: "Monday – Friday", time: "10:00 AM – 3:00 PM" }],
       mapsQuery: "Norvic International Hospital Kathmandu",
     },
     {
       name: "Rheumatology & Arthritis Center",
       role: "Consultant Rheumatologist",
       address: "Naxal, Kathmandu, Nepal",
-      timings: [{ days: "Sunday – Friday", time: "10:00 AM – 4:00 PM" }],
+      timings: [{ days: "Monday – Friday", time: "8:00 AM – 10:00 AM & 4:00 PM – 7:00 PM" }],
       mapsQuery: "Rheumatology and Arthritis Center Naxal Kathmandu",
     },
     {
       name: "Geeta Medicine",
       role: "Consultant",
       address: "Birgunj, Nepal",
-      timings: [{ days: "Saturday", time: "Available" }],
+      timings: [{ days: "Saturday", time: "10:00 AM – 5:00 PM" }],
       mapsQuery: "Geeta Medicine Birgunj",
     },
   ],
@@ -86,7 +86,6 @@ const doctor = {
     fileName: "Dr_Arun_Kumar_Gupta.vcf",
     notes: [
       "Consultant Rheumatologist & Clinical Immunologist",
-      "President – Norvic International Hospital",
       "NMC Registration No: 2757",
       "Specializations: Rheumatology, Clinical Immunology, Autoimmune Diseases",
       "Clinics:",
