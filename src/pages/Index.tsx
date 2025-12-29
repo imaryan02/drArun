@@ -12,7 +12,7 @@ const doctor = {
     fullName: "Dr. Arun Kumar Gupta",
     shortName: "Dr. Arun Gupta",
     title: "Consultant Rheumatologist & Clinical Immunologist",
-    experience: "30+ Years Experience",
+    experience: "20+ Years Experience",
     tagline: "Enhancing Lives through Advanced Rheumatology Care",
     profileImage: "/drArun.png",
     initials: "AG",
@@ -33,8 +33,8 @@ const doctor = {
   },
 
   positions: [
-    { role: "Consultant HOD Rheumatologist", organization: "Norvic International Hospital" },
-    { role: "Consultant Physician & Rheumatologist", organization: "Rheumatology & Arthritis Center" },
+    { role: "Chairman and Consultant Rheumatologist", organization: "Rheumatology & Arthritis Center (RAC) Naxal" },
+    { role: "HOD Consultant Rheumatology and Clinical Immunologist", organization: "Norvic International Hospital Thapathali Kathmandu" },
   ],
 
   specializations: [
@@ -50,28 +50,28 @@ const doctor = {
       { label: "Clinic", value: "+97714545877" },
 
     ],
-    email: "drarun_2007@yahoo.com",
+    email: "racnepal77@gmail.com",
     website: "https://www.racnepal.com",
   },
 
   clinics: [
     {
+      name: "Rheumatology & Arthritis Center (RAC)",
+      role: "Chairman and Consultant Rheumatologist",
+      address: "Naxal, Kathmandu, Nepal",
+      timings: [{ days: "Monday – Friday", time: "8:00 AM – 10:00 AM & 4:00 PM – 7:00 PM" }],
+      mapsQuery: "https://maps.app.goo.gl/bp4xG2oeR4VK2VBU8",
+    },
+    {
       name: "Norvic International Hospital",
-      role: "Consultant HOD Rheumatologist",
+      role: "HOD Consultant Rheumatology and Clinical Immunologist",
       address: "Thapathali, Kathmandu, Nepal",
       timings: [{ days: "Monday – Friday", time: "10:00 AM – 3:00 PM" }],
       mapsQuery: "Norvic International Hospital Kathmandu",
     },
     {
-      name: "Rheumatology & Arthritis Center",
-      role: "Consultant Rheumatologist",
-      address: "Naxal, Kathmandu, Nepal",
-      timings: [{ days: "Monday – Friday", time: "8:00 AM – 10:00 AM & 4:00 PM – 7:00 PM" }],
-      mapsQuery: "Rheumatology and Arthritis Center Naxal Kathmandu",
-    },
-    {
       name: "Geeta Medicine",
-      role: "Consultant",
+      role: "Consultant Rheumatologist",
       address: "Birgunj, Nepal",
       timings: [{ days: "Saturday", time: "10:00 AM – 5:00 PM" }],
       mapsQuery: "Geeta Medicine Birgunj",
@@ -86,12 +86,13 @@ const doctor = {
   vcard: {
     fileName: "Dr_Arun_Kumar_Gupta.vcf",
     notes: [
-      "Consultant Rheumatologist & Clinical Immunologist",
+      "Chairman and Consultant Rheumatologist - RAC Naxal",
+      "HOD Consultant Rheumatology and Clinical Immunologist - Norvic Hospital",
       "NMC Registration No: 2757",
       "Specializations: Rheumatology, Clinical Immunology, Autoimmune Diseases",
       "Clinics:",
-      "- Norvic International Hospital, Kathmandu",
-      "- Rheumatology & Arthritis Center, Naxal, Kathmandu",
+      "- Rheumatology & Arthritis Center (RAC), Naxal, Kathmandu",
+      "- Norvic International Hospital, Thapathali, Kathmandu",
       "- Geeta Medicine, Birgunj (Saturday)",
       "Website: https://www.racnepal.com",
     ].join("\\n"),
@@ -135,7 +136,13 @@ const VCard = () => {
 
   const handleDirections = (query?: string) => {
     const mapQuery = query || doctor.clinics[0].mapsQuery;
-    window.open(`https://maps.google.com/?q=${encodeURIComponent(mapQuery)}`, '_blank');
+    // If it's already a full URL, use it directly
+    if (mapQuery.startsWith('http')) {
+      window.open(mapQuery, '_blank');
+    } else {
+      // Otherwise, use it as a search query
+      window.open(`https://maps.google.com/?q=${encodeURIComponent(mapQuery)}`, '_blank');
+    }
   };
 
   const handleWebsite = () => {
@@ -226,10 +233,16 @@ const VCard = () => {
                 </span>
               </div>
 
-              {/* Current Position Badge */}
-              <div className="mb-5 px-4 py-2 bg-gradient-to-r from-vcard-accent/10 to-vcard-secondary/10 rounded-xl border border-vcard-accent/20">
-                <p className="text-xs font-bold text-vcard-accent">{doctor.positions[0].role}</p>
-                <p className="text-xs text-muted-foreground">{doctor.positions[0].organization}</p>
+              {/* Current Position Badges */}
+              <div className="mb-5 space-y-2">
+                <div className="px-4 py-2 bg-gradient-to-r from-vcard-accent/10 to-vcard-secondary/10 rounded-xl border border-vcard-accent/20">
+                  <p className="text-xs font-bold text-vcard-accent">{doctor.positions[0].role}</p>
+                  <p className="text-xs text-muted-foreground">{doctor.positions[0].organization}</p>
+                </div>
+                <div className="px-4 py-2 bg-gradient-to-r from-vcard-secondary/10 to-vcard-teal/10 rounded-xl border border-vcard-secondary/20">
+                  <p className="text-xs font-bold text-vcard-secondary">{doctor.positions[1].role}</p>
+                  <p className="text-xs text-muted-foreground">{doctor.positions[1].organization}</p>
+                </div>
               </div>
 
               {/* Collapsible Credentials */}
