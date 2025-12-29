@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 
 // ============= ALL DOCTOR DATA IN ONE PLACE =============
+import { generateVCard } from '@/lib/vcard-helper';
 const doctor = {
   id: "dr-arun-kumar-gupta",
 
@@ -30,7 +31,7 @@ const doctor = {
       "Fellowship in Rheumatology & Clinical Immunology – SGPGIMS, Lucknow (India)",
     ],
   },
- 
+
   positions: [
     { role: "Consultant HOD Rheumatologist", organization: "Norvic International Hospital" },
     { role: "Consultant Physician & Rheumatologist", organization: "Rheumatology & Arthritis Center" },
@@ -105,43 +106,8 @@ const VCard = () => {
   const handleSaveContact = async () => {
     try {
       toast.info("Generating contact card...");
+      const vCardData = await generateVCard(doctor);
 
-      // Fetch and convert image to base64
-      let photoString = '';
-      try {
-        const response = await fetch(doctor.personal.profileImage);
-        const blob = await response.blob();
-        const base64 = await new Promise<string>((resolve) => {
-          const reader = new FileReader();
-          reader.onloadend = () => {
-            const result = reader.result as string;
-            // Remove the data URL prefix (e.g., "data:image/jpeg;base64,")
-            resolve(result.split(',')[1]);
-          };
-          reader.readAsDataURL(blob);
-        });
-        photoString = `PHOTO;ENCODING=b;TYPE=JPEG:${base64}`;
-      } catch (error) {
-        console.error("Failed to load profile image for vCard", error);
-      }
-
-      const vCardLines = [
-        'BEGIN:VCARD',
-        'VERSION:3.0',
-        `FN:${doctor.personal.fullName}`,
-        `N:Gupta;Arun Kumar;;Dr.;`,
-        `TITLE:${doctor.personal.title}`,
-        `ORG:${doctor.positions[0].organization}`,
-        ...doctor.contact.phones.map(p => `TEL;TYPE=${p.label.toUpperCase()}:${p.value}`),
-        `EMAIL;TYPE=WORK:${doctor.contact.email}`,
-        `URL:${doctor.contact.website}`,
-        `ADR;TYPE=WORK:;;${doctor.clinics[0].name};${doctor.clinics[0].address};;;`,
-        ...(photoString ? [photoString] : []), // Add photo if available
-        `NOTE:${doctor.vcard.notes}`,
-        'END:VCARD'
-      ];
-
-      const vCardData = vCardLines.join('\n');
       const blob = new Blob([vCardData], { type: 'text/vcard;charset=utf-8' });
       const url = window.URL.createObjectURL(blob);
       const link = document.createElement('a');
