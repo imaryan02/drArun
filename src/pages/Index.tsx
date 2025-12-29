@@ -14,7 +14,7 @@ const doctor = {
     title: "Consultant Rheumatologist & Clinical Immunologist",
     experience: "30+ Years Experience",
     tagline: "Enhancing Lives through Advanced Rheumatology Care",
-    profileImage: "/drArun.jpg",
+    profileImage: "/drArun.png",
     initials: "AG",
   },
 

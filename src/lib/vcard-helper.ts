@@ -80,7 +80,7 @@ export const generateVCard = async (doctor: any) => {
             'BEGIN:VCARD',
             'VERSION:3.0',
             `FN:${doctor.personal.fullName}`,
-            `N:${doctor.personal.initials || ''};${doctor.personal.shortName.split(' ').slice(1).join(' ')};;;`, // Fallback logic
+            `N:Gupta;Arun;Kumar;Dr.;`,
             `TITLE:${doctor.personal.title}`,
             `ORG:${doctor.positions[0]?.organization || ''}`,
             ...doctor.contact.phones.map((p: any) => `TEL;TYPE=${p.label.toUpperCase()}:${p.value}`),
