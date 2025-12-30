@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Download, Navigation, MessageCircle, Share2, Award, ChevronRight, Copy, Check, Globe, ChevronDown, ChevronUp, Building2, Clock, Facebook, Instagram, Youtube, Linkedin } from 'lucide-react';
+import { Phone, Mail, MapPin, Download, Navigation, MessageCircle, Share2, Award, ChevronRight, Copy, Check, Globe, ChevronDown, ChevronUp, Building2, Clock, Facebook, Instagram, Youtube, Linkedin, Stethoscope, Syringe } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { toast } from 'sonner';
 
@@ -42,6 +42,27 @@ const doctor = {
     "Clinical Immunology",
     "Autoimmune Diseases",
     "Arthritis & Joint Disorders",
+  ],
+
+  clinicalExpertise: [
+    "Rheumatoid Arthritis (RA)",
+    "Osteoarthritis",
+    "Spondyloarthritis-AS,SA,ReA",
+    "Connective Tissue Diseases-SLE,systemic Sclerosis, MCTD",
+    "Inflammatory Myopathies• Dermatomyositis,Polymyositis",
+    "Vasculitis Disorders• ANCA-associated Vasculitis,Large & Small Vessel Vasculitis",
+    "Gout and Crystal-Induced Arthritis",
+    "Soft Tissue Rheumatism-Fibromyalgia and chronic pain",
+    "Osteoporosis and Metabolic Bone Diseases",
+    "Autoimmune & Immunological Disorders"
+  ],
+
+  procedures: [
+    "DMARDs & Biologic Therapy",
+    "Immunosuppressive Therapy",
+    "Intra-articular Joint Injections",
+    "PRP Therapy",
+    "Early Arthritis screening, Diagnosis, and Monitoring"
   ],
 
   contact: {
@@ -347,6 +368,54 @@ const VCard = () => {
                       {spec}
                     </div>
                   ))}
+                </div>
+              </div>
+
+              {/* Clinical Expertise */}
+              <div>
+                <h3 className="text-xs font-bold text-muted-foreground/60 uppercase tracking-wider mb-3 ml-1 flex items-center">
+                  Clinical Expertise
+                  <span className="ml-2 h-px w-full bg-border" />
+                </h3>
+                <div className="bg-white/60 backdrop-blur-md p-4 rounded-2xl border border-white/50 shadow-sm">
+                  <div className="flex items-center gap-3 mb-3 text-vcard-accent">
+                    <div className="p-2 bg-vcard-accent/10 rounded-lg">
+                      <Stethoscope className="w-5 h-5" />
+                    </div>
+                    <span className="font-bold text-sm text-foreground">Treatable Conditions</span>
+                  </div>
+                  <div className="grid grid-cols-1 gap-2">
+                    {doctor.clinicalExpertise.map((item, index) => (
+                      <div key={index} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <Check className="w-4 h-4 text-vcard-accent shrink-0 mt-0.5" />
+                        <span className="leading-tight">{item}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </div>
+
+              {/* Procedures / Treatment Focus */}
+              <div>
+                <h3 className="text-xs font-bold text-muted-foreground/60 uppercase tracking-wider mb-3 ml-1 flex items-center">
+                  Procedures & Treatments
+                  <span className="ml-2 h-px w-full bg-border" />
+                </h3>
+                <div className="bg-white/60 backdrop-blur-md p-4 rounded-2xl border border-white/50 shadow-sm">
+                  <div className="flex items-center gap-3 mb-3 text-vcard-secondary">
+                    <div className="p-2 bg-vcard-secondary/10 rounded-lg">
+                      <Syringe className="w-5 h-5" />
+                    </div>
+                    <span className="font-bold text-sm text-foreground">Treatment Focus</span>
+                  </div>
+                  <ul className="space-y-2">
+                    {doctor.procedures.map((item, index) => (
+                      <li key={index} className="flex items-start gap-2 text-sm text-muted-foreground">
+                        <span className="w-1.5 h-1.5 bg-vcard-secondary rounded-full mt-1.5 shrink-0" />
+                        <span className="leading-tight">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </div>
 
